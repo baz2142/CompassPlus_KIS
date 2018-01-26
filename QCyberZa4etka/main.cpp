@@ -12,8 +12,6 @@ int main(int argc, char *argv[])
     w.resize(800, 600);
     w.show();
 
-
-
 //    Student stud = Student::getRandom();
 //    StudentPresentation w;
 //    w.setEntity(&stud);
