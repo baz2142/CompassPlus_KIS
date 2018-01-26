@@ -34,7 +34,8 @@ SOURCES += \
     StudentView.cpp \
     StudentGroupView.cpp \
     AbstractEntityView.cpp \
-    Marks.cpp
+    Marks.cpp \
+    MarksView.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -46,7 +47,9 @@ HEADERS += \
     StudentView.hpp \
     StudentGroupView.hpp \
     AbstractEntityView.hpp \
-    Marks.hpp
+    Marks.hpp \
+    MarksView.hpp
 
 FORMS += \
-    Form.ui
+    Form.ui \
+    MarksView.ui
