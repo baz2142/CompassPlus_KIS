@@ -33,7 +33,8 @@ SOURCES += \
     Utils.cpp \
     StudentView.cpp \
     StudentGroupView.cpp \
-    AbstractEntityView.cpp
+    AbstractEntityView.cpp \
+    MainAppWindow.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -44,7 +45,9 @@ HEADERS += \
     Utils.hpp \
     StudentView.hpp \
     StudentGroupView.hpp \
-    AbstractEntityView.hpp
+    AbstractEntityView.hpp \
+    MainAppWindow.hpp
 
 FORMS += \
-    Form.ui
+    Form.ui \
+    MainAppWindow.ui
