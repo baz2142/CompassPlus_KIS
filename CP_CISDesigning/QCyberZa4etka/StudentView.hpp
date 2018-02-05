@@ -29,7 +29,7 @@ class StudentView: public AbstractEntityView
     QtMaterialTextField   *passportEdit       = new QtMaterialTextField(this);
 
     virtual void updateEntity() const noexcept override final;
-    virtual void updatePresentation() noexcept override final;
+    virtual void updateEntityView() noexcept override final;
 
     void setupLayout() noexcept;
     void setupTextLine(QtMaterialTextField *textLine, const QString &textLabel) noexcept;

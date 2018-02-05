@@ -33,9 +33,61 @@ void Student::setStudentId(const id_type &value) noexcept
     studentId = value;
 }
 
+void Student::insertEntity() const noexcept(false)
+{
+    QSqlQuery query;
 
+    query.prepare("INSERT INTO Students"
+                  "(id, firstName, middleName,"
+                  "lastName, phoneNumber, passportNumber"
+                  "VALUES (:id, :firstName, :middleName,"
+                  ":lastName, :phoneNumber, :passportNumber)");
 
-//Student::~Student() noexcept
-//{
+    query.bindValue(":id",              QString::number(id));
+    query.bindValue(":firstName",       firstName);
+    query.bindValue(":middleName",      middleName);
+    query.bindValue(":lastName",        lastName);
+    query.bindValue(":phoneNumber",     phoneNumber);
+    query.bindValue(":passportNumber",  passportNumber);
 
-//}
+    if (!query.exec())
+    {
+        qDebug() << "error insert into Students";
+        qDebug() << query.lastError().text();
+
+        throw DBException(query.lastError().text());
+    }
+}
+
+void Student::createTable() const noexcept(false)
+{
+    QSqlQuery query;
+
+    query.prepare
+    (             "CREATE TABLE `Students` ("
+                  "`id`               INTEGER NOT NULL,"
+                  "`firstName`        TEXT,"
+                  "`middleName`       TEXT,"
+                  "`lastName`         TEXT,"
+                  "`phoneNumber`      TEXT,"
+                  "`passportNumber`	TEXT,"
+                  "PRIMARY KEY(`id`)"
+                  ");"
+    );
+
+    if (!query.exec())
+    {
+        qDebug() << "DataBase: error of create a new Student";
+        qDebug() << query.lastError().text();
+
+        throw DBException(query.lastError().text());
+    }
+}
+
+void Student::saveEntity() const noexcept(false)
+{
+}
+
+void Student::deleteEntity() const noexcept(false)
+{
+}

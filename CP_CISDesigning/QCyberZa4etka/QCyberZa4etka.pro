@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
-CONFIG   += c++11
+QT       += core gui widgets sql
+CONFIG   += c++14
 
 TARGET = QCyberZa4etka
 TEMPLATE = app
@@ -22,13 +22,16 @@ SOURCES += \
     AbstractEntity.cpp \
     Utils.cpp \
     StudentView.cpp \
-    StudentGroupView.cpp \
     AbstractEntityView.cpp \
-    MainAppWindow.cpp \
     Marks.cpp \
     MarksView.cpp \
     MaterialMainWindow.cpp \
-    MyProfileView.cpp
+    MyProfileView.cpp \
+    StudentsView.cpp \
+    AbstractEnitiesView.cpp \
+    AbstractEntityListModel.cpp \
+    StudentListModel.cpp \
+    DataBase.cpp
 
 
 HEADERS += \
@@ -39,18 +42,20 @@ HEADERS += \
     AbstractEntity.hpp \
     Utils.hpp \
     StudentView.hpp \
-    StudentGroupView.hpp \
     AbstractEntityView.hpp \
-    MainAppWindow.hpp \
     Marks.hpp \
     MarksView.hpp \
     MaterialMainWindow.hpp \
-    MyProfileView.hpp
+    MyProfileView.hpp \
+    StudentsView.hpp \
+    AbstractEnitiesView.hpp \
+    AbstractEntityListModel.hpp \
+    StudentListModel.hpp \
+    DataBase.hpp
 
 
 FORMS += \
     Form.ui \
-    MainAppWindow.ui \
     MarksView.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../components/release/ -lcomponents

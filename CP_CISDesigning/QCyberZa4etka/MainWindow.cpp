@@ -1,41 +1,41 @@
-#include "MainWindow.hpp"
+//#include "MainWindow.hpp"
 
-void MainWindow::setupLayout() noexcept
-{
-    layout = new QSplitter(Qt::Horizontal);
-    layout->addWidget(view);
-    layout->addWidget(presentation);
+//void MainWindow::setupLayout() noexcept
+//{
+//    layout = new QSplitter(Qt::Horizontal);
+//    layout->addWidget(groupView);
+//    layout->addWidget(entityView);
 
-    setCentralWidget(layout);
-    setStyleSheet("background-color:white;");
-}
+//    setCentralWidget(layout);
+//    setStyleSheet("background-color:white;");
+//}
 
-MainWindow::MainWindow(QWidget *parent) noexcept: QMainWindow(parent)
-{
-    StudentList *list = new StudentList(this);
+//MainWindow::MainWindow(QWidget *parent) noexcept: QMainWindow(parent)
+//{
+//    AbstractEntityListModel *list = new AbstractEntityListModel(this);
 
-    list->addStudent(Student::getRandom());
-    list->addStudent(Student::getRandom());
-    list->addStudent(Student::getRandom());
+//    list->addEntity(Student::getRandom());
+//    list->addEntity(Student::getRandom());
+//    list->addEntity(Student::getRandom());
 
-    model = list;
+//    groupModel = list;
 
-    view = new QListView(this);
-    view->setModel(model);
-    view->resize(300, 300);
+//    groupView = new QListView(this);
+//    groupView->setModel(groupModel);
+//    groupView->resize(300, 300);
 
-    presentation = list->getPresentation();
+//    entityView = list->getEntityView();
 
-    const QItemSelectionModel *selectionModel = view->selectionModel();
+//    const QItemSelectionModel *selectionModel = groupView->selectionModel();
 
-    connect(selectionModel, SIGNAL(selectionChanged(QItemSelection, QItemSelection)), list, SLOT(onSelectedItemsChanged(QItemSelection, QItemSelection)));
+//    connect(selectionModel, SIGNAL(selectionChanged(QItemSelection, QItemSelection)), list, SLOT(onSelectedItemsChanged(QItemSelection, QItemSelection)));
 
-    //view->setSizePolicy(QSizePolicy::Expanding);
+//    //view->setSizePolicy(QSizePolicy::Expanding);
 
-    setupLayout();
-}
+//    setupLayout();
+//}
 
-MainWindow::~MainWindow() noexcept
-{
+//MainWindow::~MainWindow() noexcept
+//{
 
-}
+//}

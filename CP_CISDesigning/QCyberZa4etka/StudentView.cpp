@@ -12,7 +12,7 @@ StudentView::StudentView(QWidget *parent) noexcept: AbstractEntityView(parent)
 }
 
 
-void StudentView::updatePresentation() noexcept
+void StudentView::updateEntityView() noexcept
 {
     const Student *stud = dynamic_cast<Student*>(entity);
 

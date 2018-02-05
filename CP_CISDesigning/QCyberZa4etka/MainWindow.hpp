@@ -10,24 +10,24 @@
 #include <QStringListModel>
 
 #include "AbstractEntityView.hpp"
-#include "StudentGroupView.hpp"
+#include "AbstractEntityListModel.hpp"
 #include "StudentView.hpp"
 
-class MainWindow: public QMainWindow
-{
-    Q_OBJECT
+//class MainWindow: public QMainWindow
+//{
+//    Q_OBJECT
 
-    QSplitter                   *layout         = nullptr;
-    QAbstractItemModel          *model          = nullptr;
+//    QSplitter               *layout         = nullptr;
+//    QAbstractItemModel      *groupModel     = nullptr;
 
-    QAbstractItemView           *view           = nullptr;
-    AbstractEntityView   *presentation          = nullptr;
+//    AbstractEntityView      *entityView     = nullptr;
+//    QAbstractItemView       *groupView      = nullptr;
 
-    void setupLayout() noexcept;
+//    void setupLayout() noexcept;
 
-public:
-    MainWindow(QWidget *parent = 0) noexcept;
-    ~MainWindow() noexcept;
-};
+//public:
+//    MainWindow(QWidget *parent = 0) noexcept;
+//    ~MainWindow() noexcept;
+//};
 
 #endif // MAINWINDOW_HPP

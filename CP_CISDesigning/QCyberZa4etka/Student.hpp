@@ -5,13 +5,14 @@
 
 #include <QString>
 
-
 #include "Utils.hpp"
 #include "AbstractHuman.hpp"
+#include "DataBase.hpp"
 
 class Student: public Human
 {
-    id_type     studentId;
+protected:
+    id_type studentId;
 
 public:
     static Student* getRandom() noexcept;
@@ -27,6 +28,13 @@ public:
 
     id_type getStudentId() const noexcept;
     void    setStudentId(const id_type &value) noexcept;
+
+    // AbstractEntity interface
+public:
+    virtual void insertEntity() const noexcept(false) override;
+    virtual void createTable() const noexcept(false) override;
+    virtual void saveEntity() const noexcept(false) override;
+    virtual void deleteEntity() const noexcept(false) override;
 };
 
 #endif // STUDENT_HPP
