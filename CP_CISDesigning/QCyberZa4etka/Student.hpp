@@ -17,13 +17,13 @@ protected:
 public:
     static Student* getRandom() noexcept;
 
-    Student(id_type id__,
-            id_type studentId__,
-            const QString &firstName__,
-            const QString &middleName__,
-            const QString &lastName__,
-            const QString &phoneNumber__,
-            const QString &passportNumber__) noexcept;
+    Student( id_type id__,
+             id_type studentId__            = 0,
+             const QString &firstName__     = "Undefined",
+             const QString &middleName__    = "Undefined",
+             const QString &lastName__      = "Undefined",
+             const QString &phoneNumber__   = "Undefined",
+             const QString &passportNumber__= "Undefined") noexcept;
     virtual ~Student() noexcept = default;
 
     id_type getStudentId() const noexcept;

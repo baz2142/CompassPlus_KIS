@@ -70,7 +70,7 @@ void Student::createTable() const noexcept(false)
                   "`middleName`       TEXT,"
                   "`lastName`         TEXT,"
                   "`phoneNumber`      TEXT,"
-                  "`passportNumber`	TEXT,"
+                  "`passportNumber`   TEXT,"
                   "PRIMARY KEY(`id`)"
                   ");"
     );

@@ -16,7 +16,6 @@ TEMPLATE = app
 
 SOURCES += \
         main.cpp \
-        MainWindow.cpp \
     Student.cpp \
     AbstractHuman.cpp \
     AbstractEntity.cpp \
@@ -35,7 +34,6 @@ SOURCES += \
 
 
 HEADERS += \
-        MainWindow.hpp \
     Student.hpp \
     CommonTypes.hpp \
     AbstractHuman.hpp \
@@ -56,7 +54,17 @@ HEADERS += \
 
 FORMS += \
     Form.ui \
-    MarksView.ui
+    MarksView.ui \
+    GroupView.ui \
+    Journal.ui \
+    LoginDialog.ui \
+    ProfileInfo.ui \
+    Subject.ui \
+    ExamsForm.ui \
+    EventsForm.ui \
+    TeachersForm.ui \
+    AcadenicPerformanceGraphicForm.ui \
+    AttandanceGeneralForm.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../components/release/ -lcomponents
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../components/debug/ -lcomponents

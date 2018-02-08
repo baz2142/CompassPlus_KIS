@@ -24,4 +24,5 @@ void StudentsView::setupSignals() noexcept
 
     connect(selectionModel, SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
             groupModel, SLOT(onSelectedItemsChanged(QItemSelection, QItemSelection)));
+    connect(entityView, SIGNAL(createPressed()), groupModel, SLOT(onCreateNew()));
 }

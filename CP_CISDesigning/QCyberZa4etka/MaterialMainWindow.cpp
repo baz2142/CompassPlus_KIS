@@ -43,13 +43,13 @@ void MaterialMainWindow::setupGeneralDrawer() noexcept
 {
     drawers[GENERAL] = new QtMaterialDrawer();
 
-//    QtMaterialFlatButton *students = new QtMaterialFlatButton("Students", Material::Primary);
-//    connect(students, &QtMaterialFlatButton::clicked, [=](){setMainWidget(static_cast<QWidget*>(new StudentsView));});
+    QtMaterialFlatButton *students = new QtMaterialFlatButton("Students", Material::Primary);
+    connect(students, &QtMaterialFlatButton::clicked, [=](){setMainWidget(new StudentsView);});
 
     std::vector<QWidget *> widgets;
     widgets.push_back(new QtMaterialFlatButton("Teachers", Material::Primary));
     widgets.push_back(new QtMaterialFlatButton("Groups", Material::Primary));
-    //widgets.push_back(students);
+    widgets.push_back(students);
     widgets.push_back(new QtMaterialFlatButton("Subjects", Material::Primary));
 
     setupDrawerWithWidgets(drawers[GENERAL], widgets);
@@ -60,12 +60,11 @@ void MaterialMainWindow::setupReportsDrawer() noexcept
     drawers[REPORTS] = new QtMaterialDrawer();
 
     std::vector<QWidget *> widgets;
-    widgets.push_back(new QtMaterialFlatButton("Info", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Subjects", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Exams", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Journal", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Events", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Marks", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("Academic performance graphic", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("Students attandance", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("Group attandance", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("General attandance", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("Session report", Material::Primary));
 
     setupDrawerWithWidgets(drawers[REPORTS], widgets);
 }
@@ -75,12 +74,7 @@ void MaterialMainWindow::setupSettingsDrawer() noexcept
     drawers[SETTINGS] = new QtMaterialDrawer();
 
     std::vector<QWidget *> widgets;
-    widgets.push_back(new QtMaterialFlatButton("Info", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Subjects", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Exams", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Journal", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Events", Material::Primary));
-    widgets.push_back(new QtMaterialFlatButton("Marks", Material::Primary));
+    widgets.push_back(new QtMaterialFlatButton("Configure avatar", Material::Primary));
 
     setupDrawerWithWidgets(drawers[SETTINGS], widgets);
 }
@@ -113,6 +107,7 @@ void MaterialMainWindow::setupLayout() noexcept
     layout->addWidget(drawers[SETTINGS]);
     layout->addWidget(mainWidget);
 
+    mainWidget->setLayout(new QVBoxLayout);
     setLayout(layout);
 }
 
@@ -124,10 +119,17 @@ void MaterialMainWindow::openDrawer(int tabIndex) noexcept
 
 void MaterialMainWindow::setMainWidget(QWidget *widget) noexcept
 {
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(widget);
+    assert(mainWidget->layout()->children().count() < 2);
 
-    mainWidget->setLayout(layout);
+    if (!mainWidget->layout()->isEmpty())
+    {
+        QWidget *current = mainWidget->layout()->itemAt(0)->widget();
+
+        mainWidget->layout()->removeWidget(current);
+        delete current;
+    }
+
+    mainWidget->layout()->addWidget(widget);
 }
 
 void MaterialMainWindow::addButtonToTab(QAbstractButton *button, MaterialMainWindow::CATEGORY_TAB tab) noexcept
@@ -144,7 +146,7 @@ MaterialMainWindow::MaterialMainWindow(QWidget *parent) noexcept:
     setupDrawers();
     setupLayout();
 
-    setMainWidget(new StudentsView);
+//    setMainWidget(new StudentsView);
 }
 
 MaterialMainWindow::~MaterialMainWindow() noexcept

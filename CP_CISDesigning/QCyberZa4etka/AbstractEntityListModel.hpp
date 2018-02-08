@@ -19,6 +19,8 @@ protected:
     QList<AbstractEntity*>      list;
     AbstractEntityView          *entityView = nullptr;
 
+    id_type getNextId() const;
+
 public:
 
     explicit AbstractEntityListModel(QWidget *parent = nullptr) noexcept;
@@ -33,6 +35,9 @@ signals:
 
 public slots:
     virtual void onSelectedItemsChanged(QItemSelection selected, QItemSelection deselected);
+    virtual void onCreateNew() = 0;
+    virtual void onSave();
+    virtual void onRemove();
 
     // QAbstractItemModel interface
 public:

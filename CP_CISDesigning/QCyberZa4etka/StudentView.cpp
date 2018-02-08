@@ -4,6 +4,8 @@ StudentView::StudentView(QWidget *parent) noexcept: AbstractEntityView(parent)
 {
     setupLayout();
 
+    createNewButton->setRole(Material::Role::Primary);
+
     setupTextLine(firstNameEdit, "First name");
     setupTextLine(middleNameEdit, "Middle name");
     setupTextLine(lastNameEdit, "Last name");
@@ -25,6 +27,12 @@ void StudentView::updateEntityView() noexcept
 
 void StudentView::setupLayout() noexcept
 {
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(createNewButton);
+    buttonLayout->addWidget(saveButton);
+    buttonLayout->addWidget(removeButton);
+
+    layout->addLayout(buttonLayout);
     layout->addWidget(firstNameEdit);
     layout->addWidget(middleNameEdit);
     layout->addWidget(lastNameEdit);

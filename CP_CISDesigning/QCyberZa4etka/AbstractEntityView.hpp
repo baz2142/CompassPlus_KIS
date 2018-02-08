@@ -24,6 +24,8 @@ public:
     virtual ~AbstractEntityView() noexcept;
 
 signals:
+    void createPressed();
+    void removePressed();
 
 public slots:
     void setEntity(AbstractEntity *entity) noexcept;

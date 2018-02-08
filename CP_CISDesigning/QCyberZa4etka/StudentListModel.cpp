@@ -46,3 +46,10 @@ Qt::ItemFlags StudentListModel::flags(const QModelIndex &index) const noexcept
 {
     return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
 }
+
+
+void StudentListModel::onCreateNew()
+{
+    Student *stud = new Student(getNextId());
+    emit setEntityToView(stud);
+}

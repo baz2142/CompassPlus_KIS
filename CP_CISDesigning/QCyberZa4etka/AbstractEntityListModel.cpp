@@ -5,6 +5,11 @@ AbstractEntityView* AbstractEntityListModel::getEntityView() const noexcept
     return entityView;
 }
 
+id_type AbstractEntityListModel::getNextId() const
+{
+    return list.last()->getId() + 1;
+}
+
 AbstractEntityListModel::AbstractEntityListModel(QWidget *parent) noexcept:
     QAbstractListModel(parent)
 {
@@ -36,6 +41,21 @@ void AbstractEntityListModel::onSelectedItemsChanged(QItemSelection selected, QI
 
         //emit setEntityToView(getCurrentEntity());
     }
+}
+
+void AbstractEntityListModel::onSave()
+{
+    getCurrentEntity()->saveEntity();
+}
+
+void AbstractEntityListModel::onRemove()
+{
+    AbstractEntity *currEntity = getCurrentEntity();
+
+    list.removeAt(current);
+    currEntity->deleteEntity();
+
+    delete currEntity;
 }
 
 AbstractEntity* AbstractEntityListModel::getCurrentEntity() noexcept

@@ -19,6 +19,10 @@ public:
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const noexcept override;
     virtual Qt::ItemFlags flags(const QModelIndex &index) const noexcept override;
 
+
+    // AbstractEntityListModel interface
+public slots:
+    virtual void onCreateNew() override;
 };
 
 #endif // STUDENTLISTMODEL_HPP
